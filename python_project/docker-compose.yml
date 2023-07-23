@@ -1,0 +1,49 @@
+version: '3'
+services:
+  python3:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    container_name: 'python3'
+    working_dir: '/root/'
+    tty: true
+    volumes:
+      - ./src:/root/opt
+    links:
+      - db 
+    networks:
+      python_network:
+        ipv4_address: 192.168.2.3
+
+  db:
+    container_name: mysql_host
+    build:
+      context: .
+      dockerfile: ./docker/db/mysql/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
+    volumes:
+    - ./data/db:/var/lib/mysql
+    - ./log/mysql:/var/log/mysql
+    - ./data/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+    - 3333:3333
+    # For static IP address
+    networks:
+      python_network:
+        ipv4_address: 192.168.2.2
+
+networks: 
+  python_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+       - subnet: 192.168.2.0/24
+         gateway: 192.168.2.1
