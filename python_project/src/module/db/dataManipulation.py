@@ -15,3 +15,6 @@ class DataManipulation:
 
     def delete(self):
         pass
+
+    def transaction(self):
+        pass
