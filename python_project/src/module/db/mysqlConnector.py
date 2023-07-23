@@ -2,14 +2,20 @@ import mysql.connector as mySQLConn
 from dbConnector import DbConnector
 # from mysql.connector import errorCode
 
-class MysqlConnect(DbConnector):
-    def __init__(self, conn_info):
-        print(conn_info)
-        self.conn_info = conn_info
+db_config = {
+    'user': 'docker',
+    'password': 'docker',
+    'host': '192.168.2.2',
+    'database': 'python'
+}
+
+class MysqlConnector(DbConnector):
+    def __init__(self):
+        pass
 
     def connect(self):
         try:
-            conn = mySQLConn.connect(**self.conn_info)
+            conn = mySQLConn.connect(**db_config)
             print(conn.is_connected())
             return conn
         except Exception:
