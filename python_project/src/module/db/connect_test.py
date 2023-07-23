@@ -1,9 +1,21 @@
-import mysqlConnect
+from mysqlConnect import MysqlConnect
+
+db_config = {
+    'user': 'docker',
+    'password': 'docker',
+    'host': '192.168.2.2',
+    'database': 'python'
+}
 
 class testMy:
     def __init__(self):
-        MysqlConnect('root','root','127.0.0.1','world')
+        self.conn = MysqlConnect(db_config)
+        self.conn.connect()
 
-if '__name__' == '__main__':
-    ins = testMy()
+    def main(self):
+        pass
+            
+ins = testMy()
+ins.main()
+
 
