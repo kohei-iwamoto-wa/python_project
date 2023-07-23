@@ -2,7 +2,7 @@ from mysqlConnector import MysqlConnector
 
 class testMy:
     def __init__(self):
-        self.conn = MysqlConnector()
+        self.conn = MysqlConnector('python')
         self.conn.connect()
 
     def main(self):
