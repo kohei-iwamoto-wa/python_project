@@ -4,10 +4,10 @@ class DataManipulation:
     def __init__(self, conn):
         self.conn = conn
 
-    def iter(self):
+    def iter(self, sql):
         try:
             cur = self.conn.cursor()
-            cur.execute(sql_str)
+            cur.execute(sql)
             return cur
         except Exception as e:
             print(type(e))
