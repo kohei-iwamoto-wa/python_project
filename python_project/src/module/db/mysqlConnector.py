@@ -8,9 +8,7 @@ class MysqlConnector(DbConnector):
 
     def connect(self):
         try:
-            conn = mySQLConn.connect(**self.db_conf)
-            print(conn.is_connected())
-            return conn
+            return mySQLConn.connect(**self.db_conf)
         except Exception as e:
             print(e)
             raise
