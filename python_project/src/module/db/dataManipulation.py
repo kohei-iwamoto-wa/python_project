@@ -12,6 +12,8 @@ class DataManipulation:
         except Exception as e:
             print(type(e))
             raise
+        finally:
+            cur.close()
     
     def insert(self):
         pass
