@@ -31,10 +31,31 @@ class DataManipulation:
             print(type(e))
             raise
     
-    def insert(self):
+    def insert(self, table, culumns, values):
+        try:
+            # culumn = ','.join(culumns)
+            # tuple_count = len(values)
+            # place_holder = list()
+            # for _ in range(tuple_count):
+            #     place_holder.append("%s")
+            # place_holder = ','.join(place_holder)
+            # self.conn.autocommit = True
+            cur = self.conn.cursor()
+            # str_sql = "INSERT INTO {table} ({culumn}) VALUES ({value});".format(
+            #         table=table, culumn=culumn, value=place_holder)    
+            # print(str_sql,type(values))
+            str_sql = "INSERT INTO name_age_list (name, age) VALUES ('fuji',12);"
+            cur.execute(str_sql)
+            self.conn.commit()
+            # cur.execute(str_sql, values)
+        except Exception as e:
+            print(type(e))
+            raise
+
+    def bulk_insert(self, values):
         pass
 
-    def upload(self):
+    def update(self):
         pass
 
     def delete(self):
