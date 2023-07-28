@@ -36,6 +36,7 @@ class DataManipulation:
             culumn = ','.join(culumns)
             value_count = len(values)
             place_holders = list()
+            # カラム数分%sを生成
             for _ in range(tuple_count):
                 place_holders.append('%s')
             place_holders = ','.join(place_holders)
@@ -47,6 +48,8 @@ class DataManipulation:
         except Exception as e:
             print(type(e))
             raise
+        finally:
+            cur.close()
 
     def bulk_insert(self, values):
         pass
