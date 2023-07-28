@@ -1,21 +1,26 @@
-"""データ操作クラス"""
+"""データ操作クラス
+
+SQL文を挿入して使用する。
+SQLを挿入際は、サニタイザーを利用すること。
+"""
 
 class DataManipulation:
     def __init__(self, conn):
         self.conn = conn
 
-    def read(self, sql):
+    def fetch_row(self, sql):
         try:
-            cur = self.conn.cursor(buffered=True)
+            cur = self.conn.cursor()
             cur.execute(sql)
-            cur.fetchOne
-            return cur
+            recs = []
+            for row in cur:
+                recs.append(row)
         except Exception as e:
-            print(type(e))
-            raise
+            print("Error:", e)
         finally:
             cur.close()
-
+        return recs
+    
     def select_all(self, sql):
         try:
             cur = self.conn.cursor()
@@ -25,8 +30,6 @@ class DataManipulation:
         except Exception as e:
             print(type(e))
             raise
-        finally:
-            cur.close()
     
     def insert(self):
         pass

@@ -9,8 +9,10 @@ ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
+ENV PYTHONPATH="/root/opt/module/db"
 
 RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install mysql-connector-python
+RUN pip install pytest
