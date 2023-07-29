@@ -1,5 +1,5 @@
 from mysqlConnector import MysqlConnector
-import dataManipulation
+import dataManipulation.DataManipulation as DataManipulation
 
 class testMy:
     def __init__(self):
@@ -7,11 +7,10 @@ class testMy:
         self.conn.connect()
 
     def main(self):
-        ins = dataManipulation.DataManipulation(self.conn)
+        ins = DataManipulation(self.conn)
         sql = "select * from name_age_list order by id;"
         recs = ins.fetch_row(sql)
-        print(recs)
-        ins.insert('name_age_list', ['name', 'age'], ('kohei', 32))
+        ins.insert('name_age_list', ('name', 'age'), ('kohei', 32))
 ins = testMy()
 ins.main()
 

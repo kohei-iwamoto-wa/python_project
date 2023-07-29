@@ -29,5 +29,13 @@ class MysqlConnector(DbConnector):
             print("テーブルにコミットする")
             return self.conn.commit()
         except Exception as e:
-            print(t)
+            print(e)
+            raise
+
+    def close(self):
+        try:
+            print("コネクションを閉じる")
+            return self.conn.close()
+        except Exception:
+            print(e)
             raise
