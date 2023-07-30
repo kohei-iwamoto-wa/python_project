@@ -4,7 +4,7 @@ SQL文を挿入して使用する。
 SQLを挿入際は、サニタイザーを利用すること。
 """
 
-# import util.checkInput as CheckInput 
+import util.logManager.logManager as logger
 
 class DataManipulation:
     def __init__(self, conn):
@@ -37,8 +37,8 @@ class DataManipulation:
             cur = self.conn.cursor()
             cur.execute(sql, values)
             self.conn.commit()
+            logger.std_log('レコードの登録が完了しました。')
         except Exception as e:
-            self.conn.rollback()
             print(e)
             raise
 

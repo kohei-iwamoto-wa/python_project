@@ -1,5 +1,6 @@
 from mysqlConnector import MysqlConnector
-from dataManipulation import DataManipulation as DataManipulation
+from dataManipulation import DataManipulation
+import util.logManager.logManager as logger
 
 class testMy:
     def __init__(self):
@@ -13,7 +14,8 @@ class testMy:
             recs = ins.fetch_rows(sql)
             ins = DataManipulation(self.conn)
             ins.insert('name_age_list', ('name', 'age'), ('koei', 32))
-        except Exception:
+        except Exception as e:
+            logger.error_log(e)
             print("メイン関数でエラー")
         finally:
             self.conn.close()
