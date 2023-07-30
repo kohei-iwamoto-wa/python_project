@@ -9,7 +9,7 @@ class MysqlConnector(DbConnector):
 
     def connect(self):
         try:
-            print("データベース接続処理")
+            print("データベース接続する")
             self.conn = mySQLConn.connect(**self.db_conf)
             return self.conn
         except Exception as e:
