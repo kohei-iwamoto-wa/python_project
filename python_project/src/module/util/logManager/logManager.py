@@ -36,3 +36,6 @@ def error_log(message):
 
 def std_log(message):
     logger.info(message)
+
+def debug_log(message):
+    logger.debug(message)
