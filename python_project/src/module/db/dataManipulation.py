@@ -37,7 +37,7 @@ class DataManipulation:
             cur = self.conn.cursor()
             cur.execute(sql, values)
             self.conn.commit()
-            logger.std_log('レコードの登録が完了しました。')
+            logger.info_log('レコードの登録が完了しました。')
         except Exception as e:
             print(e)
             raise

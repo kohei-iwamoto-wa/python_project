@@ -34,7 +34,7 @@ logger.addHandler(ch)
 def error_log(message):
     logger.error(message)
 
-def std_log(message):
+def info_log(message):
     logger.info(message)
 
 def debug_log(message):
